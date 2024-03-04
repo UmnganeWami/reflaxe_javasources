@@ -37,7 +37,7 @@ class Std {
 		If `t` is a class or interface with `@:generic` meta, the result is `false`.
 	**/
 	@:deprecated('Std.is is deprecated. Use Std.isOfType instead.')
-	public static function is(v:Dynamic, t:Dynamic):Bool {
+	public static function is(v:Dynamic, t:Class<Dynamic>):Bool {
 		return isOfType(v, t);
 	};
 
@@ -46,8 +46,17 @@ class Std {
 
 		If `t` is a class or interface with `@:generic` meta, the result is `false`.
 	**/
-	public static function isOfType(v:Dynamic, t:Dynamic):Bool {
-		return untyped __javasrc__("(v.getClass().equals(t.getClass()))");
+	public static function isOfType(type1:Dynamic, type2:Class<Dynamic>):Bool {
+		/*var vClass:Dynamic = v.getClass();
+			var tClass:Dynamic = t.getClass();
+			if (untyped __javasrc__("(vClass instanceof Class)")) {
+				vClass = v;
+			}
+			if (untyped __javasrc__("(tClass instanceof Class)")) {
+				tClass = t;
+			}
+			return vClass.equals(tClass); */
+		return untyped __javasrc__("type2.isInstance(type1)");
 	};
 
 	/**

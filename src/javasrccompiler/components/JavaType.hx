@@ -170,8 +170,13 @@ class JavaType extends JavaBase {
 		return switch (moduleType) {
 			case TClassDecl(clsRef):
 				compileClassName(clsRef.get(), true);
+			case TTypeDecl(t):
+				moduleType.getNameOrNative() + ".class";
+			case TAbstract(a):
+				moduleType.getNameOrNative() + ".class";
 			case _:
-				moduleType.getNameOrNative();
+				var expr = moduleType.getNameOrNative();
+				expr;
 		}
 	}
 

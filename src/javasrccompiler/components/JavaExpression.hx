@@ -45,8 +45,8 @@ class JavaExpression extends JavaBase {
 				// if (e.getClassField()) {}
 				return fieldAccessed;
 			case TTypeExpr(m):
-				return compiler.compileModuleType(m);
-
+				var expression = compiler.compileModuleType(m);
+				return expression;
 			case TBreak:
 				return 'break';
 			case TContinue:
@@ -314,11 +314,13 @@ class JavaExpression extends JavaBase {
 						final cf = cfRef.get();
 						final className = compiler.classComp.getRealPackage(clsRef.get(),
 							true); ///*JavaCompiler.DEFAULT_PACKAGE + "." + */ compiler.compileClassName(clsRef.get());
-						return className + "." + name; // StringTools.replace(className + "." + name, JavaCompiler.DEFAULT_PACKAGE + ".", "");
+						return '$className.$name'; // StringTools.replace(className + "." + name, JavaCompiler.DEFAULT_PACKAGE + ".", "");
 						// TODO: generate static access
 						// return ...
 					}
-				case FEnum(_, enumField): {
+				case FEnum(enumRef, enumField): {
+						var className = enumRef.get().name;
+						return '$className.${enumField.name}';
 						// return enumField.name;
 						// TODO: generate enum access
 						// return ...
