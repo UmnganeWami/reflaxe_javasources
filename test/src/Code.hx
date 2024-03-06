@@ -2,7 +2,6 @@
 //
 // This code has no relevance beyond testing purposes.
 // Please modify and add your own test code!
-
 package;
 
 enum TestEnum {
@@ -12,7 +11,7 @@ enum TestEnum {
 }
 
 class TestClass {
-	var field: TestEnum;
+	var field:TestEnum;
 
 	public function new() {
 		trace("Create Code class!");
@@ -20,12 +19,14 @@ class TestClass {
 	}
 
 	public function increment() {
-		switch(field) {
-			case One: field = Two;
-			case Two: field = Three;
+		trace(field);
+		switch (field) {
+			case One:
+				field = Two;
+			case Two:
+				field = Three;
 			case _:
 		}
-		trace(field);
 	}
 }
 
@@ -33,7 +34,7 @@ function main() {
 	trace("Hello world!");
 
 	final c = new TestClass();
-	for(i in 0...3) {
+	for (i in 0...3) {
 		c.increment();
 	}
 }

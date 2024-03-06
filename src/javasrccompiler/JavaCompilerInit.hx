@@ -28,7 +28,7 @@ class JavaCompilerInit {
 	}
 
 	public static function reservedNames() {
-		return ["__THISISTHEVARIBLEWEAREGETTING", "int", "float"];
+		return ["__THISISTHEVARIBLEWEAREGETTING", "int", "float", "__MYRUNNABLE"];
 	}
 }
 #end
