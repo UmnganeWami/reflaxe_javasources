@@ -107,7 +107,7 @@ class Std {
 			s = untyped __javasrc__("((Enum)s).ordinal()");
 		}*/
 		if (s is Enum) {
-			s = untyped __javasrc__("((Enum)s).ordinal()");
+			s = untyped __javasrc__("((Enum)s).name()");
 		}
 		if (untyped __javasrc__("s instanceof Integer")) {
 			s = untyped __javasrc__("s.toString()");
